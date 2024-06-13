@@ -1,0 +1,51 @@
+.navbar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Outfit', sans-serif;
+}
+
+.navbar .logo {
+    width: 150px;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: var(--main-color-purple);
+    font-size: var(--menu-font-size);
+
+}
+
+.navbar-menu li {
+    cursor: pointer;
+}
+
+.navbar-account {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: var(--btn-font-size);
+    color: var(--main-color-purple);
+    border: 1px solid var(--main-color-tomato);
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+
+.navbar button:hover {
+    background-color: var(--color-light-tomato);
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--main-color-purple);
+}
