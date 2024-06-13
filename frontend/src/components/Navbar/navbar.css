@@ -49,3 +49,17 @@
     padding-bottom: 2px;
     border-bottom: 2px solid var(--main-color-purple);
 }
+
+.navbar-basket {
+    position: relative;
+}
+
+.navbar-basket .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: var(--main-color-tomato);
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+}
