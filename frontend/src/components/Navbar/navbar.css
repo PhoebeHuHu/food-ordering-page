@@ -132,4 +132,10 @@
         display: block;
         width: 22px;
     }
+
+    .navbar-account {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
 }

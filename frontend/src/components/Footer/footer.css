@@ -52,3 +52,12 @@
     background-color: var(--color-light-grey);
     border: none;
 }
+
+/* -----media query----- */
+@media(max-width:750px) {
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+}
