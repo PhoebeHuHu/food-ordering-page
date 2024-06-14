@@ -58,6 +58,10 @@
     .footer-content {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
+    }
+
+    .footer-copyright {
+        text-align: center;
     }
 }

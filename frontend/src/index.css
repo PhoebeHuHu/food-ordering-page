@@ -6,6 +6,7 @@
   /* colors */
   --main-color-purple: #49557e;
   --main-color-tomato: #ff6347;
+  --main-color-orange: #FFA500;
   --color-light-tomato: #fff4f2;
   --color-mid-grey: #747474;
   --color-dark-grey: #262626;
@@ -23,6 +24,8 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 @keyframes fadeIn {
@@ -44,7 +47,7 @@ a {
   color: inherit;
 }
 
-.app {
+.container {
   width: 80%;
   margin: auto;
 }

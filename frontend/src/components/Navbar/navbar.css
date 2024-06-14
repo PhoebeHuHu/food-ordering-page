@@ -1,9 +1,22 @@
 .navbar {
     padding: 20px 0;
+    width: 100%;
+
+    font-family: 'Outfit', sans-serif;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    transition: ease-in-out 0.3s;
+}
+
+.navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Outfit', sans-serif;
+}
+
+.nav-bg {
+    background-color: var(--main-color-orange);
 }
 
 .navbar .logo {
@@ -19,7 +32,7 @@
 
 }
 
-.navbar-menu li {
+.navbar-menu a {
     cursor: pointer;
 }
 
@@ -30,10 +43,10 @@
 }
 
 .navbar button {
-    background: transparent;
+    background: #fff;
     font-size: var(--btn-font-size);
     color: var(--main-color-purple);
-    border: 1px solid var(--main-color-tomato);
+    border: 1px solid var(--main-color-orange);
     padding: 10px 30px;
     border-radius: 30px;
     font-family: 'Outfit', sans-serif;
@@ -107,20 +120,13 @@
 
     }
 
-    .navbar-menu li {
+    .navbar-menu a {
         display: block;
         margin: 25px 40px;
     }
 
-    nav ul li {
-        display: block;
-        margin: 25px 40px;
-    }
-
-    .menu-icon {
-        display: block;
-        width: 30px;
-        cursor: pointer;
+    .navbar-account img {
+        width: 20px;
     }
 
     .hide-mobile-menu {
@@ -130,12 +136,18 @@
     .menu-icon {
         z-index: 10;
         display: block;
-        width: 22px;
+        width: 20px;
+        cursor: pointer;
     }
 
     .navbar-account {
         display: flex;
         align-items: center;
         gap: 15px;
+    }
+
+    .navbar-account button {
+        padding: 6px 16px;
+        ;
     }
 }
