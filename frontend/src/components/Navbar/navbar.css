@@ -55,7 +55,8 @@
 }
 
 .navbar button:hover {
-    background-color: var(--color-light-tomato);
+    background-color: var(--main-color-tomato);
+    color: #fff;
 }
 
 .navbar .active {

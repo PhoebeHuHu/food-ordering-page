@@ -35,7 +35,7 @@ const Navbar = () => {
                             <Link
                                 key={item.key}
                                 to={item.href}
-                                onClick={() => setMenu(item.key)}
+                                onClick={() => { setMenu(item.key); window.scrollTo({ top: 0 }) }}
                                 className={menu === item.key ? 'active' : ''}
                             >
                                 {item.label}
