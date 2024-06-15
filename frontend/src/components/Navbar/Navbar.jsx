@@ -28,7 +28,7 @@ const Navbar = ({ setShowLogin }) => {
         <div className={`navbar ${sticky ? 'nav-bg' : ''}`}>
             <div className='container'>
                 <img src={assets.menu_icon} alt="" className='menu-icon' onClick={toggleMenu} />
-                <img src={assets.logo} alt="" className="logo" />
+                <Link to='/'><img src={assets.logo} alt="" className="logo" /></Link>
                 <ul className={`navbar-menu ${mobileMenu ? '' : 'hide-mobile-menu'}`}>
                     {NAV_ITEMS.map(item => (
                         item.key === 'home' ? (
@@ -55,7 +55,7 @@ const Navbar = ({ setShowLogin }) => {
                 <div className='navbar-account'>
                     <img src={assets.search_icon} alt="search bar icon" />
                     <div className="navbar-basket">
-                        <img src={assets.basket_icon} alt="basket icon" />
+                        <Link to='/cart'><img src={assets.basket_icon} alt="basket icon" /></Link>
                         <div className="dot"></div>
                     </div>
                     <button onClick={() => setShowLogin(true)}>sign in</button>
