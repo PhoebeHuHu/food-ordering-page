@@ -22,7 +22,55 @@
     animation: fadeIn 0.5s;
 }
 
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+}
+
 .login-popup-title img {
-    width: 22px;
+    width: 16px;
     cursor: pointer;
+}
+
+.login-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-popup-inputs input {
+    outline: none;
+    border: 1px solid var(--color-form-border);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.login-popup-container button {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: var(--main-color-tomato);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.login-popup-condition {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
+}
+
+.login-popup-condition input {
+    margin-top: 5px;
+}
+
+.login-popup p span {
+    color: var(--main-color-tomato);
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 8px;
 }
