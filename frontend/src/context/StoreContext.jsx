@@ -26,6 +26,17 @@ const StoreContextProvider = (props) => {
         setCartItems((prevCartData => ({ ...prevCartData, [itemId]: prevCartData[itemId] - 1 })))
     }
 
+    const getTotalCartAmount = () => {
+        let totalAmout = 0;
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                let itemInfo = food_list.find((product) => product._id === item);
+                totalAmout += itemInfo.price * cartItems[item];
+            }
+
+        }
+        return totalAmout;
+    }
     useEffect(() => {
         console.log(cartItems)
     }, [cartItems])//输出cartItems在它每次有变化的时候
@@ -36,7 +47,8 @@ const StoreContextProvider = (props) => {
         cartItems,
         setCartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        getTotalCartAmount
     }
 
     return (

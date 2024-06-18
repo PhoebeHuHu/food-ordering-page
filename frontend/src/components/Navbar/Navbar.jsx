@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './navbar.css'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
+import { StoreContext } from '../../context/StoreContext'
 
 const Navbar = ({ setShowLogin }) => {
     const [menu, setMenu] = useState('home');
@@ -23,6 +24,8 @@ const Navbar = ({ setShowLogin }) => {
             window.scrollY > 50 ? setSticky(true) : setSticky(false);
         })
     }, [])
+
+    const { getTotalCartAmount } = useContext(StoreContext);
 
     return (
         <div className={`navbar ${sticky ? 'nav-bg' : ''}`}>
@@ -56,7 +59,7 @@ const Navbar = ({ setShowLogin }) => {
                     <img src={assets.search_icon} alt="search bar icon" />
                     <div className="navbar-basket">
                         <Link to='/cart'><img src={assets.basket_icon} alt="basket icon" /></Link>
-                        <div className="dot"></div>
+                        <div className={getTotalCartAmount() > 0 ? 'dot' : ''}></div>
                     </div>
                     <button onClick={() => setShowLogin(true)}>sign in</button>
 
