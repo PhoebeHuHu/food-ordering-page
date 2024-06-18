@@ -1,0 +1,49 @@
+.place-order {
+    margin-top: 200px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.order-deli-info {
+    width: 100%;
+    max-width: max(30%, 500px);
+}
+
+.order-deli-info .title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.order-deli-info input {
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-form-border);
+    border-radius: 4px;
+    outline-color: var(--main-color-tomato);
+}
+
+.order-deli-info .multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+.order-price {
+    width: 100%;
+    max-width: max(40%, 500px);
+}
+
+.place-order .cart-total button {
+    margin-top: 30px;
+}
+
+/* -----media query----- */
+@media (max-width:750px) {
+    .place-order {
+        margin-top: 100px;
+        flex-direction: column;
+    }
+}
