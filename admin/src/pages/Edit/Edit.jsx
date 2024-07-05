@@ -72,7 +72,7 @@ const Edit = () => {
             const response = await axios.put(`${url}/api/food/edit/${foodId}`, formData); // 发起 PUT 请求
             if (response.data.success) {
                 toast.success(response.data.message); // 提示操作成功
-                window.location.href = 'http://localhost:5174/list'; // 页面跳转到指定路径
+                window.location.href = '/list'; // 页面跳转到指定路径
             } else {
                 toast.error(response.data.message); // 提示操作失败
             }
