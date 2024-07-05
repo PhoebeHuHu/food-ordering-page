@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useHistory } from 'react'
 import './list.css'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { assets } from '../../assets/assets'
+import { Link } from 'react-router-dom'
 const List = () => {
     const url = 'http://localhost:8080'
+
 
     const [list, setList] = useState([]);
 
@@ -28,6 +30,8 @@ const List = () => {
             toast.error('Error');
         }
     }
+
+
     useEffect(() => {
         fetchList();
     }, []);
@@ -50,7 +54,13 @@ const List = () => {
                             <p>{item.name}</p>
                             <p>{item.category}</p>
                             <p>${item.price}</p>
-                            <img onClick={() => removeFood(item._id)} src={assets.cross_icon} alt="remove item icon" className='cursor' />
+                            <div className='action'>
+                                <Link to={`/edit/${item._id}`}>
+                                    <img src={assets.edit_icon} alt="edit item icon" className='cursor' />
+                                </Link>
+                                <img onClick={() => removeFood(item._id)} src={assets.cross_icon} alt="remove item icon" className='cursor' />
+                            </div>
+
                         </div>
                     )
                 })}
