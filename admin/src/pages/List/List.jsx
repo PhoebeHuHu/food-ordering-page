@@ -4,8 +4,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
-const List = () => {
-    const url = 'http://localhost:8080'
+
+const List = ({ url }) => {
+
 
 
     const [list, setList] = useState([]);
@@ -17,6 +18,7 @@ const List = () => {
             setList(response.data.data);
         } else {
             toast.error('Error');
+            console.error();
         }
     }
 

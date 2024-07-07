@@ -4,8 +4,7 @@ import { assets } from '../../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useParams } from 'react-router-dom'
-const Edit = () => {
-    const url = 'http://localhost:8080';
+const Edit = ({ url }) => {
     const { foodId } = useParams(); // 获取路由参数中的 foodId
     const [image, setImage] = useState(false);
     const [imageOri, setImageOri] = useState('');
@@ -15,7 +14,7 @@ const Edit = () => {
         price: '',
         category: ''
     })
-    // Fetch food data by ID
+    // Fetch food data before update by ID
     useEffect(() => {
         if (foodId) {
 

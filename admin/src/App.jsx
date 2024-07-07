@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
+  const url = 'http://localhost:8080'
   return (
     <div>
       <ToastContainer />
@@ -18,11 +19,11 @@ const App = () => {
       <div className="app-content">
         <Sidebar />
         <Routes>
-          <Route path='/add' element={<Add />} />
-          <Route path='/list' element={<List />} />
-          <Route path='/orders' element={<Orders />} />
+          <Route path='/add' element={<Add url={url} />} />
+          <Route path='/list' element={<List url={url} />} />
+          <Route path='/orders' element={<Orders url={url} />} />
           {/* 使用动态参数 :foodId 传递到 Edit 组件 */}
-          <Route path='/edit/:foodId' element={<Edit />} />
+          <Route path='/edit/:foodId' element={<Edit url={url} />} />
         </Routes>
       </div>
     </div>
