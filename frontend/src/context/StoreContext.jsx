@@ -7,6 +7,9 @@ export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
+    const url = 'http://localhost:8080';
+    const [token, setToken] = useState("");
+
 
     const addToCart = (itemId) => {
         // user add this item first time
@@ -41,14 +44,22 @@ const StoreContextProvider = (props) => {
         console.log(cartItems)
     }, [cartItems])//输出cartItems在它每次有变化的时候
 
-
+    //local storage data will be saved in the token state when refresh the page
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            setToken(localStorage.getItem('token'))
+        }
+    }, [])
     const contextValue = {
         food_list,
         cartItems,
         setCartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount,
+        url,
+        token,
+        setToken
     }
 
     return (
