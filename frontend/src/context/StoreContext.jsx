@@ -1,7 +1,8 @@
 /* React 的 Context API，它用于在组件树中传递数据，而不需要手动通过每一层组件进行传递。 */
 
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+
 
 export const StoreContext = createContext(null)
 
@@ -9,7 +10,13 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const url = 'http://localhost:8080';
     const [token, setToken] = useState("");
+    const [food_list, setFoodList] = useState([])
 
+    //fetch the foodlist from database
+    const fetchFoodList = async () => {
+        const response = await axios.get(url + '/api/food/list');
+        setFoodList(response.data.data)
+    }
 
     const addToCart = (itemId) => {
         // user add this item first time
@@ -40,15 +47,20 @@ const StoreContextProvider = (props) => {
         }
         return totalAmout;
     }
+
     useEffect(() => {
         console.log(cartItems)
     }, [cartItems])//输出cartItems在它每次有变化的时候
 
     //local storage data will be saved in the token state when refresh the page
     useEffect(() => {
-        if (localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'))
+        async function loadData() {
+            await fetchFoodList();
+            if (localStorage.getItem('token')) {
+                setToken(localStorage.getItem('token'))
+            }
         }
+        loadData();
     }, [])
     const contextValue = {
         food_list,
