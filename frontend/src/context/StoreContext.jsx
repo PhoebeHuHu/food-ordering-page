@@ -18,7 +18,7 @@ const StoreContextProvider = (props) => {
         setFoodList(response.data.data)
     }
 
-    const addToCart = (itemId) => {
+    const addToCart = async (itemId) => {
         // user add this item first time
         if (!cartItems[itemId]) {
             //新增key：value
@@ -29,11 +29,17 @@ const StoreContextProvider = (props) => {
             //update the quantity value of this itemId
             setCartItems(prevCartData => ({ ...prevCartData, [itemId]: prevCartData[itemId] + 1 }))
         }
+        if (token) {
+            await axios.post(url + '/api/cart/add', { itemId }, { headers: { token } })
+        }
     }
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = async (itemId) => {
         //update the quantity value of this itemId, minus 1
         setCartItems((prevCartData => ({ ...prevCartData, [itemId]: prevCartData[itemId] - 1 })))
+        if (token) {
+            await axios.post(url + '/api/cart/remove', { itemId }, { headers: { token } })
+        }
     }
 
     const getTotalCartAmount = () => {
@@ -48,6 +54,12 @@ const StoreContextProvider = (props) => {
         return totalAmout;
     }
 
+    //store the quantity, so after refresh the page, the quantity of food items will still here
+    const loadCartData = async (token) => {
+        const response = await axios.post(url + '/api/cart/get', {}, { headers: { token } });
+        setCartItems(response.data.cartData);
+    }
+
     useEffect(() => {
         console.log(cartItems)
     }, [cartItems])//输出cartItems在它每次有变化的时候
@@ -58,6 +70,7 @@ const StoreContextProvider = (props) => {
             await fetchFoodList();
             if (localStorage.getItem('token')) {
                 setToken(localStorage.getItem('token'))
+                await loadCartData(localStorage.getItem('token'))
             }
         }
         loadData();
