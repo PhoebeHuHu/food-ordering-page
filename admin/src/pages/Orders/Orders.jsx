@@ -4,11 +4,11 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useEffect } from 'react'
-import { assets } from '../../assets/assets'
+import { assets } from '../../assets/assets.js'
 
 
 const Orders = ({ url }) => {
-    const [orders, setOrders] = useState({});
+    const [orders, setOrders] = useState([]);
 
     const fetchAllOrders = async () => {
         const response = await axios.get(url + '/api/order/list');
@@ -20,6 +20,16 @@ const Orders = ({ url }) => {
         }
     }
 
+    /* update order status */
+    const statusHandler = async (event, orderId) => {
+        const response = await axios.post(url + '/api/order/status', {
+            orderId,
+            status: event.target.value
+        })
+        if (response.data.success) {
+            await fetchAllOrders();
+        }
+    }
     useEffect(() => {
         fetchAllOrders();
     }, [])
@@ -53,7 +63,7 @@ const Orders = ({ url }) => {
                         </div>
                         <p>Items : {order.items.length}</p>
                         <p>Amount: ${order.amount}</p>
-                        <select >
+                        <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
                             <option value="Food Processing">Food Processing</option>
                             <option value="Out for Delivery">Out for Delivery</option>
                             <option value="Delivered">Delivered</option>
